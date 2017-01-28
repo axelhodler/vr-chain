@@ -2,6 +2,7 @@
   "name": "vr-chain",
   "version": "1.0.0",
   "scripts": {
+    "install": "npm rebuild",
     "start": "budo --live --verbose --port 3000 --open"
   },
   "license": "ISC",
