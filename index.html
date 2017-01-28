@@ -2,13 +2,32 @@
 <head>
   <meta charset="utf-8">
   <script src="vendor/aframe-0.4.0.js"></script>
+  <script src="vendor/aframe-text-component.min.js"></script>
+  <script src="eth_block.json"></script>
 </head>
 <body>
 
+<script>
+  AFRAME.registerComponent('block-number', {
+    init: function() {
+      this.el.setAttribute('text', 'text: ' + JSON.parse(block).number)
+    }
+  });
+</script>
+
 <a-scene>
+  <a-entity block-number
+            position="0 2 -1"></a-entity>
+
   <a-box id="box"
          color="blue"
-         position="0 0 -1">
+         scale="2 2 2"
+         position="0 1 -1">
+  </a-box>
+
+  <a-box id="box"
+         color="red"
+         position="0 1 -1">
   </a-box>
 </a-scene>
 
