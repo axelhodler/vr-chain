@@ -3,10 +3,12 @@
   "version": "1.0.0",
   "scripts": {
     "install": "npm rebuild",
-    "start": "budo --live --verbose --port 3000 --open"
+    "start": "budo --live --verbose --port 3000 --open",
+    "test": "node src/blockchain_test.js"
   },
   "license": "ISC",
   "devDependencies": {
+    "browserify": "^14.0.0",
     "budo": "^9.4.7",
     "tape": "^4.6.3"
   }

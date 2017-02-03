@@ -5,6 +5,7 @@
   <script src="vendor/aframe-text-component.min.js"></script>
   <script src="vendor/jquery-3.1.1.js"></script>
   <script src="eth_block.json"></script>
+  <script src="bundle.js"></script>
 </head>
 <body>
 
@@ -45,7 +46,8 @@
 
   <script type="text/javascript">
     $(document).ready(function() {
-      renderChain();
+      var blockchain = require('blockchain');
+      blockchain.render();
     })
   </script>
 
