@@ -4,3 +4,4 @@ tasks.xml
 bundle.js
 node_modules/electron/dist/
 node_modules/electron/path.txt
+npm-debug.log

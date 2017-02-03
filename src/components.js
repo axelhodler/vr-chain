@@ -1,15 +1,12 @@
 (function() {
   'use strict';
 
+  var selections = require('./select-block');
+
   exports.init = () => {
     AFRAME.registerComponent('can-select', {
       init: function() {
-        this.el.addEventListener('click', function() {
-          this.el.setAttribute('material', {
-            side: 'double',
-            color: 'red'
-          })
-        }.bind(this));
+        selections.changeColorOnSelection(this.el);
       }
     });
 
