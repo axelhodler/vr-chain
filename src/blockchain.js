@@ -6,7 +6,7 @@
 
   exports.render = () => {
     var currentZPosition = 3;
-    for (i = 0; i < BLOCK_AMOUNT; i++) {
+    for (var i = 0; i < BLOCK_AMOUNT; i++) {
       currentZPosition = currentZPosition - DISTANCE_BETWEEN_BLOCKS;
       repeatChainElement(currentZPosition);
     }
