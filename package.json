@@ -5,7 +5,7 @@
     "install": "npm rebuild",
     "start": "budo --live --verbose --port 3000 --open",
     "test": "./node_modules/browserify/bin/cmd.js src/blockchain_test.js | ./node_modules/tape-run/bin/run.js",
-    "browserify": "./node_modules/browserify/bin/cmd.js src/blockchain.js --standalone blockchain > bundle.js"
+    "browserify": "./node_modules/browserify/bin/cmd.js -r ./src/blockchain.js:blockchain -o bundle.js"
   },
   "license": "ISC",
   "devDependencies": {
