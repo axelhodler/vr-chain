@@ -13,7 +13,10 @@
   AFRAME.registerComponent('can-select', {
     init: function() {
       this.el.addEventListener('click', function() {
-        this.el.setAttribute('material', 'side: double; color: red;')
+        this.el.setAttribute('material', {
+          side: 'double',
+          color: 'red'
+        })
       }.bind(this));
     }
   });
