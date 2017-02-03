@@ -21,7 +21,7 @@
   <a-assets>
     <a-mixin id="chain-block"
              geometry="primitive: box; height: 2; width: 2; depth: 2;"
-             material="side: double;"></a-mixin>
+             material="side: double; color: gray;"></a-mixin>
     <a-mixin id="chain-link"
              geometry="primitive: box; height: 0.2; width: 0.2; depth: 4;"
              material="color: yellow"></a-mixin>
@@ -51,16 +51,10 @@
   </script>
 
   <a-box id="inner-box"
-         material="side: double"
-         color="green"
+         material="side: double; color: green;"
          scale="1 1 1"
          position="0 1.5 -1">
   </a-box>
-
-  <a-light type="ambient"
-           color="red"
-           position="-10 0 0"
-           look-at="a-box"></a-light>
 
 </a-scene>
 
