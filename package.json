@@ -4,13 +4,15 @@
   "scripts": {
     "install": "npm rebuild",
     "start": "budo --live --verbose --port 3000 --open",
-    "test": "node src/blockchain_test.js",
+    "test": "./node_modules/browserify/bin/cmd.js src/blockchain_test.js | ./node_modules/tape-run/bin/run.js",
     "browserify": "./node_modules/browserify/bin/cmd.js src/blockchain.js --standalone blockchain > bundle.js"
   },
   "license": "ISC",
   "devDependencies": {
     "browserify": "^14.0.0",
     "budo": "^9.4.7",
-    "tape": "^4.6.3"
+    "tape": "^4.6.3",
+    "tape-run": "^2.1.5",
+    "watchify": "^3.9.0"
   }
 }

@@ -2,7 +2,7 @@
   'use strict'
 
   var DISTANCE_BETWEEN_BLOCKS = 4;
-  var BLOCK_AMOUNT = 6;
+  var BLOCK_AMOUNT = 7;
 
   exports.render = () => {
     var currentZPosition = 3;
