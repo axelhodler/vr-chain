@@ -3,6 +3,7 @@
   <meta charset="utf-8">
   <script src="vendor/aframe-0.4.0.js"></script>
   <script src="vendor/aframe-text-component.min.js"></script>
+  <script src="vendor/jquery-3.1.1.js"></script>
   <script src="eth_block.json"></script>
 </head>
 <body>
@@ -10,27 +11,59 @@
 <script>
   AFRAME.registerComponent('block-number', {
     init: function() {
-      this.el.setAttribute('text', 'text: ' + JSON.parse(block).number)
+      this.el.setAttribute('text', 'text: blockNumber: ' + parseInt(JSON.parse(block).number, 16))
     }
   });
 </script>
 
-<a-scene>
-  <a-entity block-number
-            position="0 2 -1"></a-entity>
+<a-scene id="main-scene">
+  <a-assets>
+    <a-mixin id="chain-block"
+             geometry="primitive: box; height: 2; width: 2; depth: 2;"
+             material="side: double;"></a-mixin>
+    <a-mixin id="chain-link"
+             geometry="primitive: box; height: 0.2; width: 0.2; depth: 4;"
+             material="color: yellow"></a-mixin>
+  </a-assets>
 
-  <a-box id="box"
+  <a-entity id="block-number"
+            block-number
+            scale="0.1 0.1 0.1"
+            material="color: black;"
+            position="-0.5 1.5 0.001"></a-entity>
+
+  <a-entity id="outer-box"
+            mixin="block-with-link"
+            position="0 1.5 -1">
+  </a-entity>
+
+  <a-entity id="block-number"
+            block-number
+            scale="0.1 0.1 0.1"
+            material="color: black;"
+            position="-0.5 1.5 0.001"></a-entity>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      renderChain();
+    })
+  </script>
+
+  <a-box id="inner-box"
          material="side: double"
-         color="blue"
-         scale="2 2 2"
-         position="0 1 -1">
+         color="green"
+         scale="1 1 1"
+         position="0 1.5 -1">
   </a-box>
 
-  <a-box id="box"
-         color="red"
-         position="0 1 -1">
-  </a-box>
+  <a-light type="ambient"
+           color="red"
+           position="-10 0 0"
+           look-at="a-box"></a-light>
+
 </a-scene>
+
+<script src="src/repeater.js"></script>
 
 </body>
 </html>
