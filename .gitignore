@@ -1,7 +1,6 @@
 node_modules/fsevents/lib/binding/Release/node-v51-darwin-x64/
 workspace.xml
 tasks.xml
-bundle.js
 node_modules/electron/dist/
 node_modules/electron/path.txt
 npm-debug.log
