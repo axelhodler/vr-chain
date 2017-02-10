@@ -2,6 +2,7 @@
   'use strict';
 
   var selections = require('./select-block');
+  const block = require('./block-gateway').block;
 
   exports.init = () => {
     AFRAME.registerComponent('can-select', {
