@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "scripts": {
     "install": "npm rebuild",
-    "start": "budo --live --verbose --port 3000 --open",
+    "start": "budo src/index.js --live --verbose --port 3000 --open",
     "test": "./node_modules/browserify/bin/cmd.js src/*_test.js | ./node_modules/tape-run/bin/run.js",
     "browserify": "./node_modules/browserify/bin/cmd.js -r ./src/components.js:components -r ./src/blockchain.js:blockchain -o bundle.js"
   },
