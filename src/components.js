@@ -12,7 +12,12 @@
 
     AFRAME.registerComponent('block-number', {
       init: function() {
-        this.el.setAttribute('text', 'width: 15; align: center; value: blockNumber: ' + parseInt(JSON.parse(block).number, 16))
+        var parsedBlockNumber = parseInt(JSON.parse(block).number, 16);
+        this.el.setAttribute('text', {
+          width: 15,
+          align: 'center',
+          value: 'blockNumber: ' + parsedBlockNumber
+        });
       }
     });
   }
