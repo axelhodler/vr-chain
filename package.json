@@ -14,5 +14,8 @@
     "tape": "^4.6.3",
     "tape-run": "^2.1.5",
     "watchify": "^3.9.0"
+  },
+  "dependencies": {
+    "express": "^4.14.1"
   }
 }
