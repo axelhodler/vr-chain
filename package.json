@@ -4,6 +4,7 @@
   "scripts": {
     "install": "npm rebuild",
     "start": "budo src/index.js --live --verbose --port 3000 --open",
+    "test-server": "./node_modules/tape/bin/tape src/server/*_test.js | node_modules/.bin/tap-spec",
     "test": "./node_modules/browserify/bin/cmd.js src/*_test.js | ./node_modules/tape-run/bin/run.js",
     "browserify": "./node_modules/browserify/bin/cmd.js -r ./src/index.js:main -o bundle.js"
   },
@@ -12,6 +13,7 @@
     "browserify": "^14.0.0",
     "budo": "^9.4.7",
     "request-promise-native": "^1.0.3",
+    "tap-spec": "^4.1.1",
     "tape": "^4.6.3",
     "tape-run": "^2.1.5",
     "watchify": "^3.9.0"
