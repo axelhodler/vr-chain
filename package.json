@@ -11,6 +11,7 @@
   "devDependencies": {
     "browserify": "^14.0.0",
     "budo": "^9.4.7",
+    "request-promise-native": "^1.0.3",
     "tape": "^4.6.3",
     "tape-run": "^2.1.5",
     "watchify": "^3.9.0"
