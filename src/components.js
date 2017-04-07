@@ -2,7 +2,7 @@
   'use strict';
 
   var selections = require('./select-block');
-  const block = require('./block-gateway').block;
+  const block = require('./blockchaininfo-gateway').latestBlock();
 
   exports.init = () => {
     AFRAME.registerComponent('can-select', {
