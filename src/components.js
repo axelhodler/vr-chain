@@ -1,8 +1,8 @@
 (function() {
   'use strict';
 
-  var selections = require('./select-block');
-  const block = require('./server/blockchaininfo-gateway').latestBlock();
+  var selections = require('./select-block')
+  const gateway = require('./server/blockchaininfo-gateway')
 
   exports.init = () => {
     AFRAME.registerComponent('can-select', {
@@ -13,12 +13,13 @@
 
     AFRAME.registerComponent('block-number', {
       init: function() {
-        var parsedBlockNumber = parseInt(JSON.parse(block).number, 16);
-        this.el.setAttribute('text', {
-          width: 15,
-          align: 'center',
-          value: 'blockNumber: ' + parsedBlockNumber
-        });
+        gateway.latestBlock().then(latestBlock => {
+          this.el.setAttribute('text', {
+            width: 15,
+            align: 'center',
+            value: 'blockNumber: ' + latestBlock
+          });
+        })
       }
     });
   }
