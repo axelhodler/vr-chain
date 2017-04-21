@@ -12,6 +12,18 @@ test('can query latestblock', assert => {
   })
 })
 
+test('can query blocks by their id', assert => {
+  const runningServer = server.start()
+  rp('http://localhost:3001/blocks/453471').then(resp => {
+    assert.equal(JSON.parse(resp).id, 453471)
+  }).catch(() => {
+    assert.fail('route not available');
+  }).then(() => {
+    runningServer.close()
+    assert.end()
+  })
+})
+
 test('handles server not present gracefully', assert => {
   rp('http://localhost:3001/latestblock').then(() => {
     assert.fail('server should not respond')
