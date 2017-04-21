@@ -14,6 +14,7 @@
   function repeatChainElement(zPosition) {
     var mainScene = document.getElementById('main-scene')
     appendChainBlock(mainScene, zPosition)
+    appendChainDescription(mainScene, zPosition)
     appendChainLink(mainScene, zPosition)
   }
 
@@ -23,6 +24,14 @@
     chainBlock.setAttribute('mixin', 'chain-block')
     chainBlock.setAttribute('position', '0 1.5 ' + zPosition)
     mainScene.appendChild(chainBlock)
+  }
+
+  function appendChainDescription(mainScene, zPosition) {
+    var blockDescription = document.createElement('a-entity')
+    blockDescription.setAttribute('mixin', 'block-description')
+    blockDescription.setAttribute('position', '0 1.5 ' + zPosition)
+    blockDescription.setAttribute('rotation', '0 -90 0')
+    mainScene.appendChild(blockDescription)
   }
 
   function appendChainLink(mainScene, zPosition) {
