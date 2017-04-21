@@ -8,6 +8,6 @@ test('renders the block and the chain', (assert) => {
 
   blockchain.render(1)
 
-  assert.equals(scene.getElementsByTagName('a-entity').length, 2)
+  assert.equals(scene.getElementsByTagName('a-entity').length, 3)
   assert.end()
 })
