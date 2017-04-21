@@ -12,17 +12,13 @@
     <img id="room" src="textures/room.jpeg">
     <a-mixin id="chain-block"
              can-select
+             block-number
              geometry="primitive: box; height: 2; width: 2; depth: 2;"
              material="side: double; color: gray;"></a-mixin>
     <a-mixin id="chain-link"
              geometry="primitive: box; height: 0.2; width: 0.2; depth: 4;"
              material="color: yellow"></a-mixin>
   </a-assets>
-
-  <a-entity id="block-number"
-            block-number
-            scale="0.1 0.1 0.1"
-            position="-0.5 1.5 0.001"></a-entity>
 
   <a-camera>
     <a-cursor></a-cursor>
