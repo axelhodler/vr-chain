@@ -8,8 +8,8 @@
     var currentBlockNumber = LATEST_BLOCK;
     for (var i = 0; i < blockAmount; i++) {
       currentZPosition = currentZPosition - DISTANCE_BETWEEN_BLOCKS;
-      currentBlockNumber--;
       repeatChainElement(currentZPosition, currentBlockNumber);
+      currentBlockNumber--;
     }
   }
 
@@ -30,6 +30,7 @@
 
   function appendChainDescription(mainScene, zPosition, blockId) {
     var blockDescription = document.createElement('a-entity')
+    blockDescription.setAttribute('id', 'block-' + blockId + '-description')
     blockDescription.setAttribute('mixin', 'block-description')
     blockDescription.setAttribute('block-number', { blockId : blockId})
     blockDescription.setAttribute('position', '0 1.5 ' + zPosition)
