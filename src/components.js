@@ -13,15 +13,15 @@
 
     AFRAME.registerComponent('block-number', {
       schema: {
-        blockId: {type: 'number'}
+        height: {type: 'number'}
       },
       init: function() {
-        gateway.blockById(this.data.blockId).then(block=> {
+        gateway.blockById(this.data.height).then(block => {
           this.el.setAttribute('text', {
             zOffset: 1.001,
             width: 3,
             align: 'center',
-            value: 'blockNumber: ' + block.id
+            value: 'height: ' + block.height
           });
         })
       }

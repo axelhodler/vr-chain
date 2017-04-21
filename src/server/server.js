@@ -3,9 +3,9 @@ var cors = require('cors')
 var app = express()
 app.use(cors())
 
-app.get('/blocks/:blockId', (req, res) => {
+app.get('/blocks/:height', (req, res) => {
   res.send({
-    'id': +req.params.blockId
+    'height': +req.params.height
   })
 })
 
