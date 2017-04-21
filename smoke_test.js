@@ -10,7 +10,7 @@ test('Load a Page', assert => {
     })
     .end()
     .then(result => {
-      assert.false(result.includes('Cannot find module'))
+      assert.false(result.includes('Cannot find module'), 'Finds required modules')
       assert.end()
     })
 })
