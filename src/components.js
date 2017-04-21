@@ -15,8 +15,8 @@
       init: function() {
         gateway.latestBlock().then(latestBlock => {
           this.el.setAttribute('text', {
-            zOffset: 1,
-            width: 1,
+            zOffset: 1.001,
+            width: 2,
             align: 'center',
             value: 'blockNumber: ' + latestBlock
           });
