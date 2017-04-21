@@ -12,13 +12,16 @@
     });
 
     AFRAME.registerComponent('block-number', {
+      schema: {
+        blockId: {type: 'number'}
+      },
       init: function() {
-        gateway.latestBlock().then(latestBlock => {
+        gateway.blockById(this.data.blockId).then(block=> {
           this.el.setAttribute('text', {
             zOffset: 1.001,
             width: 3,
             align: 'center',
-            value: 'blockNumber: ' + latestBlock
+            value: 'blockNumber: ' + block.id
           });
         })
       }

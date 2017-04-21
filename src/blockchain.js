@@ -2,19 +2,21 @@
   'use strict'
 
   var DISTANCE_BETWEEN_BLOCKS = 4;
-
+  var LATEST_BLOCK = 453470;
   exports.render = (blockAmount) => {
     var currentZPosition = 3;
+    var currentBlockNumber = LATEST_BLOCK;
     for (var i = 0; i < blockAmount; i++) {
       currentZPosition = currentZPosition - DISTANCE_BETWEEN_BLOCKS;
-      repeatChainElement(currentZPosition);
+      currentBlockNumber--;
+      repeatChainElement(currentZPosition, currentBlockNumber);
     }
   }
 
-  function repeatChainElement(zPosition) {
+  function repeatChainElement(zPosition, blockNumber) {
     var mainScene = document.getElementById('main-scene')
     appendChainBlock(mainScene, zPosition)
-    appendChainDescription(mainScene, zPosition)
+    appendChainDescription(mainScene, zPosition, blockNumber)
     appendChainLink(mainScene, zPosition)
   }
 
@@ -26,9 +28,10 @@
     mainScene.appendChild(chainBlock)
   }
 
-  function appendChainDescription(mainScene, zPosition) {
+  function appendChainDescription(mainScene, zPosition, blockId) {
     var blockDescription = document.createElement('a-entity')
     blockDescription.setAttribute('mixin', 'block-description')
+    blockDescription.setAttribute('block-number', { blockId : blockId})
     blockDescription.setAttribute('position', '0 1.5 ' + zPosition)
     blockDescription.setAttribute('rotation', '0 -90 0')
     mainScene.appendChild(blockDescription)
