@@ -1,7 +1,7 @@
 const Nightmare = require('nightmare')
 const test = require('tape')
 
-test('Load a Page', assert => {
+test('Smoke', assert => {
   let nightmare = new Nightmare()
 
   nightmare.goto('http://localhost:3000')
