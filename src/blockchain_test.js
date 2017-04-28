@@ -9,9 +9,8 @@ test('renders the block and the chain', assert => {
   scene.setAttribute('id', 'main-scene')
   document.body.appendChild(scene)
 
-  const ONE_BLOCK = 1;
   const blockchain = new BlockChain();
-  blockchain.render(ONE_BLOCK, new Block(IRRELEVANT, IRRELEVANT))
+  blockchain.render(new Block(IRRELEVANT, IRRELEVANT))
 
   const PARTS_SINGLE_BLOCK_CONSISTS_OF = 3;
   assert.equals(scene.getElementsByTagName('a-entity').length,
@@ -26,10 +25,10 @@ test('counts back the ids from newest to oldest', assert => {
   scene.setAttribute('id', 'main-scene')
   document.body.appendChild(scene)
 
-  const TWO_BLOCKS = 2;
   const NEWEST_BLOCK_HEIGHT = 42;
   const blockchain = new BlockChain();
-  blockchain.render(TWO_BLOCKS, new Block(IRRELEVANT, NEWEST_BLOCK_HEIGHT))
+  blockchain.render(new Block(IRRELEVANT, NEWEST_BLOCK_HEIGHT))
+  blockchain.render(new Block(IRRELEVANT, NEWEST_BLOCK_HEIGHT - 1))
 
   assert.true(document.getElementById('block-42-description'),
     'newest block is rendered')

@@ -15,10 +15,9 @@ let nextBlockShouldBeRendered = function(nextBlock, componentChangedEvent) {
 $(document).ready(function() {
   var blockchain = new BlockChain()
 
-  blockchain.render(Config.initialBlocks,
-    new Block(Config.initialZIndex, Config.LATEST_BLOCK_HEIGHT));
-  let currentBlockHeight = Config.LATEST_BLOCK_HEIGHT - Config.initialBlocks;
-  let zIndexLastRenderedBlock = Config.initialZIndex * (Config.initialBlocks + 1);
+  blockchain.render(new Block(Config.initialZIndex, Config.LATEST_BLOCK_HEIGHT));
+  let currentBlockHeight = Config.LATEST_BLOCK_HEIGHT
+  let zIndexLastRenderedBlock = Config.initialZIndex
   var nextBlock =
     new Block(-(zIndexLastRenderedBlock + Config.initialZIndex - 2), currentBlockHeight);
 
@@ -29,7 +28,7 @@ $(document).ready(function() {
     }
 
     if (nextBlockShouldBeRendered(nextBlock, componentChangedEvent)) {
-      blockchain.render(1, Object.assign({}, nextBlock))
+      blockchain.render(Object.assign({}, nextBlock))
       nextBlock = new Block(nextBlock.zCoordinate - Config.initialZIndex - 1,
         currentBlockHeight - 1)
     }

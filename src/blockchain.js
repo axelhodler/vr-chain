@@ -33,13 +33,10 @@ function appendChainLink(mainScene, zPosition) {
 }
 
 export default class BlockChain {
-  render(blockAmount, block) {
+  render(block) {
     var DISTANCE_BETWEEN_BLOCKS = 4;
     var currentBlockHeight = block.blockHeight;
-    for (var i = 0; i < blockAmount; i++) {
-      block.zCoordinate -= DISTANCE_BETWEEN_BLOCKS;
-      repeatChainElement(new Block(block.zCoordinate, currentBlockHeight));
-      currentBlockHeight--;
-    }
+    block.zCoordinate -= DISTANCE_BETWEEN_BLOCKS;
+    repeatChainElement(new Block(block.zCoordinate, block.blockHeight));
   }
 }
