@@ -1,3 +1,5 @@
+import Block from './block'
+
 (function() {
   'use strict'
 
@@ -6,16 +8,16 @@
     var currentBlockHeight = block.blockHeight;
     for (var i = 0; i < blockAmount; i++) {
       block.zCoordinate -= DISTANCE_BETWEEN_BLOCKS;
-      repeatChainElement(block.zCoordinate, currentBlockHeight);
+      repeatChainElement(new Block(block.zCoordinate, currentBlockHeight));
       currentBlockHeight--;
     }
   }
 
-  function repeatChainElement(zPosition, blockNumber) {
+  function repeatChainElement(block) {
     var mainScene = document.getElementById('main-scene')
-    appendChainBlock(mainScene, zPosition)
-    appendChainDescription(mainScene, zPosition, blockNumber)
-    appendChainLink(mainScene, zPosition)
+    appendChainBlock(mainScene, block.zCoordinate)
+    appendChainDescription(mainScene, block)
+    appendChainLink(mainScene, block.zCoordinate)
   }
 
   function appendChainBlock(mainScene, zPosition) {
@@ -26,12 +28,12 @@
     mainScene.appendChild(chainBlock)
   }
 
-  function appendChainDescription(mainScene, zPosition, height) {
+  function appendChainDescription(mainScene, block) {
     var blockDescription = document.createElement('a-entity')
-    blockDescription.setAttribute('id', 'block-' + height + '-description')
+    blockDescription.setAttribute('id', 'block-' + block.blockHeight + '-description')
     blockDescription.setAttribute('mixin', 'block-description')
-    blockDescription.setAttribute('block-number', { height: height})
-    blockDescription.setAttribute('position', '0 1.5 ' + zPosition)
+    blockDescription.setAttribute('block-number', { height: block.blockHeight})
+    blockDescription.setAttribute('position', '0 1.5 ' + block.zCoordinate)
     blockDescription.setAttribute('rotation', '0 -90 0')
     mainScene.appendChild(blockDescription)
   }
