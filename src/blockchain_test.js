@@ -1,6 +1,5 @@
 const test = require('tape');
 var blockchain = require('./blockchain')
-const latestBlock = 453470
 
 const IRRELEVANT = 0;
 
