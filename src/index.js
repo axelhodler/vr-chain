@@ -12,7 +12,7 @@ $(document).ready(function() {
   var blockchain = new BlockChain()
 
   blockchain.render(Config.initialBlocks,
-    new Block(Config.initialBlocks, Config.LATEST_BLOCK_HEIGHT));
+    new Block(Config.initialZIndex, Config.LATEST_BLOCK_HEIGHT));
   let currentBlockHeight = Config.LATEST_BLOCK_HEIGHT - Config.initialBlocks;
   let zIndexLastRenderedBlock = Config.initialZIndex * (Config.initialBlocks + 1);
 
