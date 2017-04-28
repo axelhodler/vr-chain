@@ -2,27 +2,37 @@ const test = require('tape');
 var blockchain = require('./blockchain')
 const latestBlock = 453470
 
+const IRRELEVANT = 0;
+
 test('renders the block and the chain', (assert) => {
   let scene = document.createElement('div')
   scene.setAttribute('id', 'main-scene')
   document.body.appendChild(scene)
 
-  blockchain.render(1)
+  const ONE_BLOCK = 1;
+  blockchain.render(ONE_BLOCK, IRRELEVANT, IRRELEVANT)
 
-  assert.equals(scene.getElementsByTagName('a-entity').length, 3)
+  const PARTS_SINGLE_BLOCK_CONSISTS_OF = 3;
+  assert.equals(scene.getElementsByTagName('a-entity').length,
+    PARTS_SINGLE_BLOCK_CONSISTS_OF,
+    'one block with description and link was rendered')
   document.body.removeChild(scene)
   assert.end()
 })
 
-test('counts back the ids', (assert) => {
+test('counts back the ids from newest to oldest', (assert) => {
   let scene = document.createElement('div')
   scene.setAttribute('id', 'main-scene')
   document.body.appendChild(scene)
 
-  blockchain.render(2)
+  const TWO_BLOCKS = 2;
+  const NEWEST_BLOCK_HEIGHT = 42;
+  blockchain.render(TWO_BLOCKS, IRRELEVANT, NEWEST_BLOCK_HEIGHT)
 
-  assert.true(document.getElementById('block-453470-description'));
-  assert.true(document.getElementById('block-453469-description'));
+  assert.true(document.getElementById('block-42-description'),
+    'newest block is rendered')
+  assert.true(document.getElementById('block-41-description'),
+    'second newest block is rendered')
   document.body.removeChild(scene)
   assert.end()
 })

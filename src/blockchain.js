@@ -2,10 +2,8 @@
   'use strict'
 
   var DISTANCE_BETWEEN_BLOCKS = 4;
-  var LATEST_BLOCK_HEIGHT = 453470;
-  exports.render = (blockAmount) => {
-    var currentZPosition = 3;
-    var currentBlockHeight = LATEST_BLOCK_HEIGHT;
+  exports.render = (blockAmount, currentZPosition, height) => {
+    var currentBlockHeight = height;
     for (var i = 0; i < blockAmount; i++) {
       currentZPosition = currentZPosition - DISTANCE_BETWEEN_BLOCKS;
       repeatChainElement(currentZPosition, currentBlockHeight);
