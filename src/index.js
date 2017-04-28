@@ -8,6 +8,10 @@ let xpositionUnchanged = function(event) {
   return event.name !== 'position' || event.oldXCoordinate === event.newXCoordinate
 }
 
+let nextBlockShouldBeRendered = function(nextBlock, componentChangedEvent) {
+  return Math.abs(nextBlock.zCoordinate) < Math.abs(componentChangedEvent.newZCoordinate)
+}
+
 $(document).ready(function() {
   var blockchain = new BlockChain()
 
@@ -15,6 +19,8 @@ $(document).ready(function() {
     new Block(Config.initialZIndex, Config.LATEST_BLOCK_HEIGHT));
   let currentBlockHeight = Config.LATEST_BLOCK_HEIGHT - Config.initialBlocks;
   let zIndexLastRenderedBlock = Config.initialZIndex * (Config.initialBlocks + 1);
+  var nextBlock =
+    new Block(-(zIndexLastRenderedBlock + Config.initialZIndex - 2), currentBlockHeight);
 
   document.getElementById('camera').addEventListener('componentchanged', event => {
     var componentChangedEvent = new ComponentChanged(event)
@@ -22,10 +28,10 @@ $(document).ready(function() {
       return;
     }
 
-    if (zIndexLastRenderedBlock < Math.abs(componentChangedEvent.newZCoordinate)) {
-      blockchain.render(1, new Block(-zIndexLastRenderedBlock, currentBlockHeight))
-      zIndexLastRenderedBlock += Config.initialZIndex
-      currentBlockHeight--
+    if (nextBlockShouldBeRendered(nextBlock, componentChangedEvent)) {
+      blockchain.render(1, Object.assign({}, nextBlock))
+      nextBlock = new Block(nextBlock.zCoordinate - Config.initialZIndex - 1,
+        currentBlockHeight - 1)
     }
   });
 })
