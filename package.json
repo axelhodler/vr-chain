@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "scripts": {
     "install": "npm rebuild",
-    "start": "budo src/index.js --live --verbose --port 3000 --open",
+    "start": "budo src/index.js --live --verbose --port 3000 --open -- -t [ babelify --presets [ es2015 ] ]",
     "server": "node run_server.js",
     "test-server": "./node_modules/tape/bin/tape src/server/*_test.js | node_modules/.bin/tap-spec",
     "test": "./scripts/test.sh",
