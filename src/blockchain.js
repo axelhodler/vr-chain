@@ -2,11 +2,11 @@
   'use strict'
 
   var DISTANCE_BETWEEN_BLOCKS = 4;
-  exports.render = (blockAmount, currentZPosition, height) => {
-    var currentBlockHeight = height;
+  exports.render = (blockAmount, block) => {
+    var currentBlockHeight = block.blockHeight;
     for (var i = 0; i < blockAmount; i++) {
-      currentZPosition = currentZPosition - DISTANCE_BETWEEN_BLOCKS;
-      repeatChainElement(currentZPosition, currentBlockHeight);
+      block.zCoordinate -= DISTANCE_BETWEEN_BLOCKS;
+      repeatChainElement(block.zCoordinate, currentBlockHeight);
       currentBlockHeight--;
     }
   }

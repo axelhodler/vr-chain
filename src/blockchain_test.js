@@ -1,5 +1,6 @@
 const test = require('tape');
 var blockchain = require('./blockchain')
+import Block from './block'
 
 const IRRELEVANT = 0;
 
@@ -9,7 +10,7 @@ test('renders the block and the chain', assert => {
   document.body.appendChild(scene)
 
   const ONE_BLOCK = 1;
-  blockchain.render(ONE_BLOCK, IRRELEVANT, IRRELEVANT)
+  blockchain.render(ONE_BLOCK, new Block(IRRELEVANT, IRRELEVANT))
 
   const PARTS_SINGLE_BLOCK_CONSISTS_OF = 3;
   assert.equals(scene.getElementsByTagName('a-entity').length,
@@ -26,7 +27,7 @@ test('counts back the ids from newest to oldest', assert => {
 
   const TWO_BLOCKS = 2;
   const NEWEST_BLOCK_HEIGHT = 42;
-  blockchain.render(TWO_BLOCKS, IRRELEVANT, NEWEST_BLOCK_HEIGHT)
+  blockchain.render(TWO_BLOCKS, new Block(IRRELEVANT, NEWEST_BLOCK_HEIGHT))
 
   assert.true(document.getElementById('block-42-description'),
     'newest block is rendered')
