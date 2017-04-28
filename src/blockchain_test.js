@@ -3,7 +3,7 @@ var blockchain = require('./blockchain')
 
 const IRRELEVANT = 0;
 
-test('renders the block and the chain', (assert) => {
+test('renders the block and the chain', assert => {
   let scene = document.createElement('div')
   scene.setAttribute('id', 'main-scene')
   document.body.appendChild(scene)
@@ -19,7 +19,7 @@ test('renders the block and the chain', (assert) => {
   assert.end()
 })
 
-test('counts back the ids from newest to oldest', (assert) => {
+test('counts back the ids from newest to oldest', assert => {
   let scene = document.createElement('div')
   scene.setAttribute('id', 'main-scene')
   document.body.appendChild(scene)
